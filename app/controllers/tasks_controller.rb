@@ -31,6 +31,11 @@ class TasksController < ApplicationController
 		redirect_to tasks_path
 	end
 
+	def new_record?
+  		sync_with_transaction_state if @transaction_state&.finalized?
+  		@new_record
+	end
+
 	private
 
 	def task_params
