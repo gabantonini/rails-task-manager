@@ -1,5 +1,15 @@
+<% if task.new_record? %>
 <ul>
 	<%= form_for(task) do |f| %>
+		<li><%= f.label :title %></li>
+		<li><%= f.text_field :title %></li>
+		<li><%= f.label :details %></li>
+		<li><%= f.text_field :details %></li>
+		<li><%= f.submit %></li>
+	<% end %>
+</ul>
+<% else %>
+<%= form_for(task) do |f| %>
 		<li><%= f.label :title %></li>
 		<li><%= f.text_field :title %></li>
 		<li><%= f.label :details %></li>
@@ -9,5 +19,5 @@
 		<li><%= f.submit %></li>
 	<% end %>
 </ul>
-
+<% end %>
 <p><%= link_to "Back to list", tasks_path %></p>
